@@ -1,0 +1,67 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Survey Results Dashboard</h2>
+
+<p>
+    Welcome, {{ user.username }}
+</p>
+
+<h3>
+    Total Responses: {{ total_responses }}
+</h3>
+
+<h3>
+    Average Rating:
+    {{ average_rating|floatformat:1 }}
+</h3>
+
+<hr>
+
+<h3>All Survey Responses</h3>
+
+<div class="table-wrapper">
+<table>
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Technology</th>
+            <th>Rating</th>
+            <th>Feedback</th>
+            <th>Submitted</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for response in responses %}
+
+        <tr>
+            <td>{{ response.name }}</td>
+            <td>{{ response.email }}</td>
+            <td>{{ response.technology }}</td>
+            <td>{{ response.rating }}</td>
+            <td>{{ response.feedback }}</td>
+            <td>{{ response.submitted_at }}</td>
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="6">
+                No survey responses yet.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+</div>
+
+{% endblock %}

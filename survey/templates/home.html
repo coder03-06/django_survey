@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Student Technology Survey</h2>
+
+<p>
+    Please complete the survey below.
+    No login is required.
+</p>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Submit Survey
+    </button>
+
+</form>
+
+{% endblock %}
